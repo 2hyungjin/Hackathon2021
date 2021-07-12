@@ -6,28 +6,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.navArgs
 import com.example.hackathon2021.R
+import com.example.hackathon2021.data.School
+import com.example.hackathon2021.databinding.SignUpFragmentBinding
 import com.example.hackathon2021.viewmodel.SignUpViewModel
 
 class SignUpFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = SignUpFragment()
-    }
-
-    private lateinit var viewModel: SignUpViewModel
+    private val args: SignUpFragmentArgs by navArgs()
+    private val viewModel: SignUpViewModel by activityViewModels()
+    lateinit var binding: SignUpFragmentBinding
+    private lateinit var school: School
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.sign_up_fragment, container, false)
+    ): View {
+        binding = SignUpFragmentBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        school = args.school
+        binding.school = school
 
+    }
 }

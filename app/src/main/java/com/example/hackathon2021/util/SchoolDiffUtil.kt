@@ -1,14 +1,14 @@
 package com.example.hackathon2021.util
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.hackathon2021.data.School
+import com.example.hackathon2021.data.ResSearchSchool
 
-class SchoolDiffUtil : DiffUtil.ItemCallback<School>() {
-    override fun areItemsTheSame(oldItem: School, newItem: School): Boolean {
+class SchoolDiffUtil : DiffUtil.ItemCallback<ResSearchSchool>() {
+    override fun areItemsTheSame(oldItem: ResSearchSchool, newItem: ResSearchSchool): Boolean {
         return oldItem.code==newItem.code
     }
 
-    override fun areContentsTheSame(oldItem: School, newItem: School): Boolean {
+    override fun areContentsTheSame(oldItem: ResSearchSchool, newItem: ResSearchSchool): Boolean {
         return oldItem==newItem
     }
 }

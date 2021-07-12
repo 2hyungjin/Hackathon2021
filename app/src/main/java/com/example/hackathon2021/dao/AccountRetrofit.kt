@@ -1,9 +1,6 @@
 package com.example.hackathon2021.dao
 
-import com.example.hackathon2021.data.Account
-import com.example.hackathon2021.data.LoginResponse
-import com.example.hackathon2021.data.Res
-import com.example.hackathon2021.data.School
+import com.example.hackathon2021.data.*
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -17,6 +14,12 @@ interface AccountRetrofit {
     @GET("school/search-school")
     suspend fun searchSchool(
         @Query("query") name: String
-    ): Response<Res<List<School>>>
+    ): Response<Res<List<ResSearchSchool>>>
+
+    @POST("auth/signin")
+    suspend fun signIn(
+        @Body
+        req: ReqSignIn
+    ): Response<Res<Any>>
 
 }

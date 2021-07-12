@@ -42,6 +42,7 @@ class LoginFragment : Fragment() {
     private fun observe() {
         viewModel.loginRes.observe(viewLifecycleOwner, Observer {
             mApplication.prefs.token = it.authToken
+            findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
         })
     }
 

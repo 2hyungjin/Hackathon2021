@@ -7,20 +7,23 @@ import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hackathon2021.R
+import com.example.hackathon2021.data.ResSearchSchool
 import com.example.hackathon2021.data.School
 import com.example.hackathon2021.util.SchoolDiffUtil
 
 class SchoolListAdapter(private val itemClicked: (school: School) -> Unit) :
-    ListAdapter<School, SchoolListAdapter.ViewHolder>(SchoolDiffUtil()) {
+    ListAdapter<ResSearchSchool, SchoolListAdapter.ViewHolder>(SchoolDiffUtil()) {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvSchoolName: TextView = view.findViewById(R.id.tv_school_name_school_rv_item)
-        val tvSchoolCode: TextView = view.findViewById(R.id.tv_school_code_school_rv_item)
-        fun bind(school: School) {
+        val tvSchoolCode: TextView = view.findViewById(R.id.tv_school_address_school_rv_item)
+        fun bind(school: ResSearchSchool) {
             tvSchoolName.text = school.name
-            tvSchoolCode.text = school.code
+            tvSchoolCode.text = school.address
 
             itemView.setOnClickListener {
-                itemClicked.invoke(school)
+                itemClicked.invoke(
+                    School(school.code, school.name)
+                )
             }
         }
     }

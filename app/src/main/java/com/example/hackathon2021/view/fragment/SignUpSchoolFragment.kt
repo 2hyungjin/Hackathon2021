@@ -1,11 +1,14 @@
 package com.example.hackathon2021.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hackathon2021.R
@@ -18,8 +21,8 @@ import com.example.hackathon2021.viewmodel.SignUpSchoolViewModel
 class SignUpSchoolFragment : Fragment() {
     private lateinit var binding: SignUpSchoolFragmentBinding
     private lateinit var schoolLIstAdapter: SchoolListAdapter
-    private val viewModel: SignUpSchoolViewModel by viewModels()
-    private val schoolList = arrayListOf<School>()
+    private val viewModel: SignUpSchoolViewModel by activityViewModels()
+    private var schoolList = listOf<School>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,14 +34,31 @@ class SignUpSchoolFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observe()
+
         schoolLIstAdapter = SchoolListAdapter {
             navigateSignUp(it)
         }
+
         binding.rvSignUpSchoolFragment.apply {
             adapter = schoolLIstAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
+        binding.btnSearchSchoolSignUpSchoolFragment.setOnClickListener {
+            searchSchool()
+        }
 
+    }
+
+    private fun observe() {
+        viewModel.searchSchoolRes.observe(viewLifecycleOwner, Observer {
+            schoolLIstAdapter.submitList(it)
+        })
+    }
+
+    private fun searchSchool() {
+        val query = binding.edtFindSchoolSignUpSchoolFragment.text.toString()
+        viewModel.searchSchool(query)
     }
 
     private fun navigateSignUp(school: School) {
@@ -48,5 +68,6 @@ class SignUpSchoolFragment : Fragment() {
             )
         )
     }
+
 
 }

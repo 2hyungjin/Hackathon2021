@@ -9,16 +9,17 @@
         android:id="@+id/tv_school_name_school_rv_item"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         tools:layout_editor_absoluteX="11dp" />
 
     <TextView
-        android:id="@+id/tv_school_code_school_rv_item"
+        android:id="@+id/tv_school_address_school_rv_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="14sp"
         android:text="TextView"
         tools:layout_editor_absoluteY="38dp" />
 </LinearLayout>
