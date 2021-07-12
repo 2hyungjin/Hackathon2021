@@ -1,7 +1,8 @@
-package com.example.hackathon2021
+package com.example.hackathon2021.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.hackathon2021.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
