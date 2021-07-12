@@ -16,10 +16,12 @@ interface AccountRetrofit {
         @Query("query") name: String
     ): Response<Res<List<ResSearchSchool>>>
 
-    @POST("auth/signin")
-    suspend fun signIn(
+    @POST("auth/signup")
+    suspend fun signUp(
         @Body
-        req: ReqSignIn
+        req: ReqSignUp
     ): Response<Res<Any>>
 
+    @GET("auth/exist")
+    suspend fun idCheck(@Query("id") id: String): Response<Res<Any>>
 }

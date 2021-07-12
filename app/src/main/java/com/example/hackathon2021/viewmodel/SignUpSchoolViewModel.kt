@@ -21,7 +21,7 @@ class SignUpSchoolViewModel : ViewModel() {
                 }
                 else{
                     Log.d("searchSchool",it.body()!!.message)
-                    Log.d("searchSchool",it.body()!!.status)
+                    Log.d("searchSchool",it.body()!!.status.toString())
                 }
             }
         }

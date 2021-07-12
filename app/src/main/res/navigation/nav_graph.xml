@@ -19,7 +19,10 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_loginFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/signUpSchoolFragment"
@@ -41,10 +44,36 @@
         <argument
             android:name="School"
             app:argType="com.example.hackathon2021.data.School" />
+        <action
+            android:id="@+id/action_signUpFragment_to_signUpResFragment"
+            app:destination="@id/signUpResFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.hackathon2021.view.fragment.MainFragment"
-        android:label="main_fragment"
-        tools:layout="@layout/main_fragment" />
+        tools:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/action_mainFragment_to_postFragment"
+            app:destination="@id/postFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popEnterAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.example.hackathon2021.view.fragment.PostFragment"
+        android:label="post_fragment"
+        tools:layout="@layout/post_fragment" />
+    <fragment
+        android:id="@+id/signUpResFragment"
+        android:name="com.example.hackathon2021.view.fragment.SignUpResFragment"
+        android:label="SignUpResFragment" >
+        <action
+            android:id="@+id/action_signUpResFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

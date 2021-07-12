@@ -21,7 +21,7 @@ import com.example.hackathon2021.viewmodel.SignUpSchoolViewModel
 class SignUpSchoolFragment : Fragment() {
     private lateinit var binding: SignUpSchoolFragmentBinding
     private lateinit var schoolLIstAdapter: SchoolListAdapter
-    private val viewModel: SignUpSchoolViewModel by activityViewModels()
+    private val viewModel: SignUpSchoolViewModel by viewModels()
     private var schoolList = listOf<School>()
 
     override fun onCreateView(

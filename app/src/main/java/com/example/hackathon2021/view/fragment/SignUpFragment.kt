@@ -2,22 +2,30 @@ package com.example.hackathon2021.view.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.hackathon2021.R
+import com.example.hackathon2021.data.ReqSignUp
 import com.example.hackathon2021.data.School
 import com.example.hackathon2021.databinding.SignUpFragmentBinding
 import com.example.hackathon2021.viewmodel.SignUpViewModel
 
 class SignUpFragment : Fragment() {
     private val args: SignUpFragmentArgs by navArgs()
-    private val viewModel: SignUpViewModel by activityViewModels()
+    private val viewModel: SignUpViewModel by viewModels()
     lateinit var binding: SignUpFragmentBinding
     private lateinit var school: School
+    private var isIdChecked = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,8 +37,55 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observe()
         school = args.school
         binding.school = school
+        binding.edtIdSignUpFragment.addTextChangedListener { isIdChecked = false }
+        binding.btnIdCheckSignUpFragment.setOnClickListener { idCheck() }
+        binding.btnNextSignUpFragment.setOnClickListener { signUp() }
+    }
+
+    private fun observe() {
+        viewModel.signUpRes.observe(viewLifecycleOwner, Observer {
+            when (it.status) {
+                in 200..300 -> findNavController().navigate(R.id.action_signUpFragment_to_signUpResFragment)
+                else -> Toast.makeText(requireContext(), "회원가입에 실패하였습니다", Toast.LENGTH_SHORT).show()
+            }
+        })
+        viewModel.idCheckRes.observe(viewLifecycleOwner, Observer {
+//            binding.progressBar.visibility=View.INVISIBLE
+            when (it.status) {
+                in 200..300 -> {
+                    Toast.makeText(requireContext(), "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show()
+                    isIdChecked = true
+                }
+                else -> Toast.makeText(requireContext(), "중복된 아이디입니다.", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun signUp() {
+        val grade = binding.edtGradeSignUpFragment.text.toString()
+        val classNum = binding.edtClassSignUpFragment.text.toString()
+        val name = binding.edtNameSignUpFragment.text.toString()
+        val id = binding.edtIdSignUpFragment.text.toString()
+        val pw = binding.edtPwSignUpFragment.text.toString()
+        val pw2 = binding.edtPw2SignUpFragment.text.toString()
+        if (isIdChecked && pwCheck(pw, pw2)) {
+//            binding.progressBar.visibility=View.VISIBLE
+            viewModel.signUp(ReqSignUp(grade.toInt(), classNum.toInt(), id, pw, school.name, school.code, name))
+        } else Toast.makeText(requireContext(), "형식에 맞게 입력해주세요", Toast.LENGTH_SHORT).show()
 
     }
+
+    private fun idCheck() {
+        val id = binding.edtIdSignUpFragment.text.toString()
+        if (id.length in 6..13) viewModel.idCheck(id)
+        else Toast.makeText(requireContext(), "형식에 맞게 입력해주세요", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun pwCheck(pw: String, pw2: String): Boolean {
+        return pw == pw2 && pw.length in 8..17
+    }
+
 }
