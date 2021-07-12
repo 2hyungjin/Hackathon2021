@@ -32,6 +32,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/edt_id_login_fragment"
                     android:hint="id" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -43,6 +44,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/edt_pw_login_fragment"
                     android:hint="password" />
             </com.google.android.material.textfield.TextInputLayout>
 

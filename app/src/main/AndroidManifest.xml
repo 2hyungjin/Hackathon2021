@@ -3,6 +3,7 @@
     package="com.example.hackathon2021">
 <uses-permission android:name="android.permission.INTERNET"/>
     <application
+        android:name=".util.mApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true"

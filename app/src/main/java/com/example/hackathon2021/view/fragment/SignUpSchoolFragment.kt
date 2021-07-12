@@ -38,6 +38,7 @@ class SignUpSchoolFragment : Fragment() {
             adapter = schoolLIstAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
+
     }
 
     private fun navigateSignUp(school: School) {
