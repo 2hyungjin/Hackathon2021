@@ -18,12 +18,16 @@ class CommentListAdapter : ListAdapter<Comment, CommentListAdapter.ViewHolder>(C
         val tvTime: TextView = view.findViewById(R.id.tv_time_rv_item_comments)
         val tvContent: TextView = view.findViewById(R.id.tv_comment_rv_item_comments)
         fun bind(comment: Comment) {
-            if (comment.isWriter) {
-                tvWriter.text = "익명(작성자)"
+            if (comment.isMe){
+                tvWriter.text = "나"
                 tvWriter.setTextColor(Color.parseColor("#FF6200EE"))
-            } else {
+            }else {
                 tvWriter.text = "익명"
                 tvWriter.setTextColor(Color.BLACK)
+            }
+            if (comment.isWriter) {
+                tvWriter.append(" (작성자)")
+                tvWriter.setTextColor(Color.parseColor("#FF6200EE"))
             }
             tvContent.text = comment.comment
             tvTime.text=comment.date

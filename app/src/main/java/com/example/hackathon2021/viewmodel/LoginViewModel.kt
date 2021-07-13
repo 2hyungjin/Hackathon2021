@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 class LoginViewModel : ViewModel() {
     val accountRetrofit = RetrofitConfig.accountRetrofit
 
-    val loginRes = MutableLiveData<Res<ResLogin>>()
+    var loginRes = MutableLiveData<Res<ResLogin>?>()
 
     fun login(account: Account) {
         viewModelScope.launch {

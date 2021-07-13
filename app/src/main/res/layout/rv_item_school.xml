@@ -8,8 +8,8 @@
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
@@ -25,6 +25,7 @@
                 android:id="@+id/tv_school_name_school_rv_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
                 android:text="TextView"
                 android:textColor="@color/black"
                 android:textSize="14sp"
