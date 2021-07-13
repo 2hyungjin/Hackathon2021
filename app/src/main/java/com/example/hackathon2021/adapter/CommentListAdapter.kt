@@ -26,7 +26,7 @@ class CommentListAdapter : ListAdapter<Comment, CommentListAdapter.ViewHolder>(C
                 tvWriter.setTextColor(Color.BLACK)
             }
             tvContent.text = comment.comment
-
+            tvTime.text=comment.date
         }
     }
 

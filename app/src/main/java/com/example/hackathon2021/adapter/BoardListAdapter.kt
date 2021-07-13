@@ -49,7 +49,7 @@ class BoardListAdapter(val onClick: (board: Board) -> Unit) :
                     setTextColor(Color.BLACK)
                 }
             }
-//            tvTime.text =
+            tvTime.text = board.date
         }
     }
 
