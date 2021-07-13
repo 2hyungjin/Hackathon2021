@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -44,8 +45,8 @@ class SignUpSchoolFragment : Fragment() {
             adapter = schoolLIstAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
-        binding.btnSearchSchoolSignUpSchoolFragment.setOnClickListener {
-            searchSchool()
+        binding.edtFindSchoolSignUpSchoolFragment.addTextChangedListener {
+            searchSchool(it.toString())
         }
 
     }
@@ -56,8 +57,7 @@ class SignUpSchoolFragment : Fragment() {
         })
     }
 
-    private fun searchSchool() {
-        val query = binding.edtFindSchoolSignUpSchoolFragment.text.toString()
+    private fun searchSchool(query:String) {
         viewModel.searchSchool(query)
     }
 

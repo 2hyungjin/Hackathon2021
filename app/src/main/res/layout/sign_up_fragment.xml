@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="school"
             type="com.example.hackathon2021.data.School" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -25,8 +25,8 @@
                 android:id="@+id/tv_school_name_sign_up_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
                 android:gravity="center"
+
                 android:text="@{school.name}"
                 android:textColor="@color/black"
                 android:textSize="24sp"

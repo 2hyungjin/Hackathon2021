@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/signUpSchoolFragment"
         android:name="com.example.hackathon2021.view.fragment.SignUpSchoolFragment"
-        android:label=""
+        android:label="학교 찾기"
         tools:layout="@layout/sign_up_school_fragment" >
         <action
             android:id="@+id/action_signUpSchoolFragment_to_signUpFragment"
@@ -40,7 +40,7 @@
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.hackathon2021.view.fragment.SignUpFragment"
-        android:label="학교찾기"
+        android:label=""
         tools:layout="@layout/sign_up_fragment" >
         <argument
             android:name="School"
@@ -68,7 +68,7 @@
     <fragment
         android:id="@+id/postFragment"
         android:name="com.example.hackathon2021.view.fragment.PostFragment"
-        android:label="post_fragment"
+        android:label="게시글 작성"
         tools:layout="@layout/post_fragment" />
     <fragment
         android:id="@+id/signUpResFragment"

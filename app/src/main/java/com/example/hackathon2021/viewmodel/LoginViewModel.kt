@@ -5,15 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hackathon2021.data.Account
-import com.example.hackathon2021.data.LoginResponse
-import com.example.hackathon2021.data.Res
+import com.example.hackathon2021.data.res.ResLogin
+import com.example.hackathon2021.data.res.Res
 import com.example.hackathon2021.util.RetrofitConfig
 import kotlinx.coroutines.launch
 
 class LoginViewModel : ViewModel() {
     val accountRetrofit = RetrofitConfig.accountRetrofit
 
-    val loginRes = MutableLiveData<Res<LoginResponse>>()
+    val loginRes = MutableLiveData<Res<ResLogin>>()
 
     fun login(account: Account) {
         viewModelScope.launch {

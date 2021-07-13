@@ -4,8 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.hackathon2021.data.ResSearchSchool
-import com.example.hackathon2021.data.School
+import com.example.hackathon2021.data.res.ResSearchSchool
 import com.example.hackathon2021.util.RetrofitConfig
 import kotlinx.coroutines.launch
 
@@ -20,8 +19,7 @@ class SignUpSchoolViewModel : ViewModel() {
                     searchSchoolRes.postValue(it.body()?.data!!)
                 }
                 else{
-                    Log.d("searchSchool",it.body()!!.message)
-                    Log.d("searchSchool",it.body()!!.status.toString())
+                    Log.d("searchSchool",it.errorBody().toString())
                 }
             }
         }

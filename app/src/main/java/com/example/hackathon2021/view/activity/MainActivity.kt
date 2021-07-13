@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.hackathon2021.R
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +14,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navController = findNavController(R.id.nav_host_fragment)
         val appBarConfiguration = AppBarConfiguration(navController.graph)
+        findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar).apply {
+            setupWithNavController(
+                navController,
+                appBarConfiguration
+            )
+        }
 
 
     }

@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.hackathon2021.data.ReqSignUp
-import com.example.hackathon2021.data.Res
+import com.example.hackathon2021.data.req.ReqSignUp
+import com.example.hackathon2021.data.res.Res
 import com.example.hackathon2021.util.RetrofitConfig
 import kotlinx.coroutines.launch
 
