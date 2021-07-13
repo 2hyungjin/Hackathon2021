@@ -6,10 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hackathon2021.viewmodel.MainViewModel
 import com.example.hackathon2021.R
@@ -33,6 +32,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observe()
         boardListAdapter = BoardListAdapter {
             navigateToDetail(it)
         }
@@ -42,12 +42,22 @@ class MainFragment : Fragment() {
         }
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter
+            adapter=boardListAdapter
         }
+        binding.swipeLayoutMainFragment.setOnRefreshListener { getBoards() }
+        getBoards()
+    }
+    private fun observe(){
+        viewModel.getBoardsRes.observe(viewLifecycleOwner, Observer {
+            boardListAdapter.submitList(it)
+        })
     }
 
     private fun navigateToDetail(board: Board) {
-        findNavController().nav
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(board))
+    }
+    private fun getBoards(){
+        viewModel.getBoards()
     }
 
 

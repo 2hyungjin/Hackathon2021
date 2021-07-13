@@ -87,5 +87,9 @@
         android:id="@+id/detailFragment"
         android:name="com.example.hackathon2021.DetailFragment"
         android:label="detail_fragment"
-        tools:layout="@layout/detail_fragment" />
+        tools:layout="@layout/detail_fragment" >
+        <argument
+            android:name="board"
+            app:argType="com.example.hackathon2021.data.Board" />
+    </fragment>
 </navigation>

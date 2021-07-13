@@ -16,5 +16,5 @@ interface PostRetrofit {
     ): Response<Res<Any>>
 
     @GET("post")
-    suspend fun get():Response<Res<Board>>
+    suspend fun get():Response<Res<List<Board>>>
 }
