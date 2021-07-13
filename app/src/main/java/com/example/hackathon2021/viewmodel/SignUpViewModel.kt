@@ -21,8 +21,7 @@ class SignUpViewModel : ViewModel() {
                 if (it.isSuccessful){
                     idCheckRes.postValue(it.body())
                 }else{
-                    Log.d("SignUp", it.body()!!.status.toString())
-                    Log.d("SignUp", it.body()!!.message)
+                    Log.d("signup",it.errorBody().toString())
                 }
             }
         }
@@ -33,8 +32,7 @@ class SignUpViewModel : ViewModel() {
                 if (it.isSuccessful) {
                     signUpRes.postValue(it.body())
                 } else {
-                    Log.d("SignUp", it.body()!!.status.toString())
-                    Log.d("SignUp", it.body()!!.message)
+                    Log.d("signup",it.errorBody().toString())
                 }
             }
         }

@@ -21,8 +21,7 @@ class LoginViewModel : ViewModel() {
                 if (it.isSuccessful) {
                     loginRes.postValue(it.body())
                 } else {
-                    Log.d("login", it.body()!!.message)
-                    Log.d("login", it.body()!!.status.toString())
+                    Log.d("login",it.errorBody().toString())
                 }
             }
         }

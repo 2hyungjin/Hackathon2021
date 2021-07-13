@@ -48,18 +48,19 @@ class SignUpFragment : Fragment() {
     private fun observe() {
         viewModel.signUpRes.observe(viewLifecycleOwner, Observer {
             when (it.status) {
-                in 200..300 -> findNavController().navigate(R.id.action_signUpFragment_to_signUpResFragment)
+                200 -> findNavController().navigate(R.id.action_signUpFragment_to_signUpResFragment)
                 else -> Toast.makeText(requireContext(), "회원가입에 실패하였습니다", Toast.LENGTH_SHORT).show()
             }
         })
         viewModel.idCheckRes.observe(viewLifecycleOwner, Observer {
-//            binding.progressBar.visibility=View.INVISIBLE
             when (it.status) {
-                in 200..300 -> {
+                200 -> {
                     Toast.makeText(requireContext(), "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show()
                     isIdChecked = true
                 }
-                else -> Toast.makeText(requireContext(), "중복된 아이디입니다.", Toast.LENGTH_SHORT).show()
+                202 ->{
+                    Toast.makeText(requireContext(), "중복된 아이디입니다.", Toast.LENGTH_SHORT).show()
+                }
             }
         })
     }

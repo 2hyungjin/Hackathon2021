@@ -47,11 +47,11 @@
                 tools:layout_editor_absoluteX="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_class_sign_up_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:baselineAligned="false"
                     android:hint="학년"
-                    android:id="@+id/edt_class_sign_up_fragment"
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,10 +65,10 @@
                 tools:layout_editor_absoluteX="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_grade_sign_up_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="반"
-                    android:id="@+id/edt_grade_sign_up_fragment"
 
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -83,9 +83,9 @@
                 tools:layout_editor_absoluteX="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_name_sign_up_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/edt_name_sign_up_fragment"
 
                     android:hint="이름" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -96,15 +96,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="12"
                 app:helperText="6~12자리 문자 또는 숫자로 입력해주세요"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
                 tools:layout_editor_absoluteX="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_id_sign_up_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/edt_id_sign_up_fragment"
-
                     android:hint="아이디" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -126,16 +127,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="16"
                 app:helperText="8~16자리 문자 또는 숫자로 입력해주세요"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
+                app:passwordToggleEnabled="true"
                 tools:layout_editor_absoluteX="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_pw_sign_up_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/edt_pw_sign_up_fragment"
+                    android:hint="비밀번호"
 
-                    android:hint="비밀번호" />
+                    android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -147,13 +152,15 @@
                 app:helperText="비밀번호를 다시 입력해주세요"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
+                app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_pw2_sign_up_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/edt_pw2_sign_up_fragment"
-                    android:hint="비밀번호 확인" />
+                    android:hint="비밀번호 확인"
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton

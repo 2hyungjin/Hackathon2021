@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.hackathon2021.view.fragment.LoginFragment"
-        android:label="login_fragment"
+        android:label=""
         tools:layout="@layout/login_fragment" >
         <action
             android:id="@+id/action_loginFragment_to_signUpSchoolFragment"
@@ -22,12 +22,13 @@
             app:destination="@id/mainFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpSchoolFragment"
         android:name="com.example.hackathon2021.view.fragment.SignUpSchoolFragment"
-        android:label="sign_up_school_fragment"
+        android:label=""
         tools:layout="@layout/sign_up_school_fragment" >
         <action
             android:id="@+id/action_signUpSchoolFragment_to_signUpFragment"
@@ -39,7 +40,7 @@
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.hackathon2021.view.fragment.SignUpFragment"
-        android:label="sign_up_fragment"
+        android:label="학교찾기"
         tools:layout="@layout/sign_up_fragment" >
         <argument
             android:name="School"
@@ -60,6 +61,9 @@
             app:destination="@id/postFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:popEnterAnim="@anim/nav_default_exit_anim" />
+        <argument
+            android:name="school"
+            app:argType="com.example.hackathon2021.data.School" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"

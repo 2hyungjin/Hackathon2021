@@ -12,6 +12,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.hackathon2021.R
 import com.example.hackathon2021.data.Account
 import com.example.hackathon2021.databinding.LoginFragmentBinding
@@ -32,6 +34,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe()
+
         binding.btnSignUpLoginFragment.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signUpSchoolFragment)
         }
@@ -43,12 +46,12 @@ class LoginFragment : Fragment() {
     private fun observe() {
         viewModel.loginRes.observe(viewLifecycleOwner, Observer {
             when (it.status) {
-                in 200..300 -> {
+                200 -> {
                     mApplication.prefs.token = it.data.authToken
-                    findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToMainFragment(it.data.school))
                 }
                 else -> {
-                    Toast.makeText(requireContext(), "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                 }
             }
         })
