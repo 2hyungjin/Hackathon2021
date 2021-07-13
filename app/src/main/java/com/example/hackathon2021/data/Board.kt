@@ -6,9 +6,9 @@ import java.util.*
 
 @Parcelize
 data class Board(
-    val commentsNum: Int,
+    var commentsNum: Int,
     val content: String,
-    val date: Long,
+    val date: String,
     val id: Int,
     val isMe: Boolean,
     val isUpdated: Boolean,

@@ -47,7 +47,7 @@
                 tools:layout_editor_absoluteX="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edt_class_sign_up_fragment"
+                    android:id="@+id/edt_grade_sign_up_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:baselineAligned="false"
@@ -65,7 +65,7 @@
                 tools:layout_editor_absoluteX="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edt_grade_sign_up_fragment"
+                    android:id="@+id/edt_class_sign_up_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="반"

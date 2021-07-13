@@ -29,4 +29,9 @@ interface PostRetrofit {
         @Body
         reqPostComment: ReqPostComment
     ): Response<Res<Any>>
+
+    @GET("post/search/{searchValue}")
+    suspend fun searchPost(
+        @Path("searchValue") value: String
+    ): Response<Res<List<Board>>>
 }

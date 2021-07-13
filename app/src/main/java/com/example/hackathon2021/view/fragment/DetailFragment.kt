@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hackathon2021.R
 import com.example.hackathon2021.adapter.CommentListAdapter
+import com.example.hackathon2021.data.Board
 import com.example.hackathon2021.data.req.ReqPostComment
 import com.example.hackathon2021.databinding.DetailFragmentBinding
 import com.example.hackathon2021.viewmodel.DetailViewModel
@@ -22,6 +23,7 @@ class DetailFragment : Fragment() {
     private val viewModel: DetailViewModel by viewModels()
     private val args: DetailFragmentArgs by navArgs()
     private lateinit var commentListAdapter: CommentListAdapter
+    private lateinit var thisBoard: Board
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,10 +36,11 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         commentListAdapter = CommentListAdapter()
-        binding.board = args.board
+        thisBoard=args.board
+        binding.board = thisBoard
         binding.rvCommentsDetailFragment.apply {
-            adapter=commentListAdapter
-            layoutManager=LinearLayoutManager(requireContext())
+            adapter = commentListAdapter
+            layoutManager = LinearLayoutManager(requireContext())
         }
         binding.tvCommentsCountDetailFragment.text = args.board.commentsNum.toString()
         binding.swipeLayoutDetailFragment.setOnRefreshListener { getComments() }
@@ -55,6 +58,9 @@ class DetailFragment : Fragment() {
             Toast.makeText(requireContext(), "댓글 작성에 성공하였습니다", Toast.LENGTH_SHORT).show()
             binding.edtCommentDetailFragment.text = null
             getComments()
+            thisBoard.commentsNum++
+            binding.tvCommentsCountDetailFragment.text = args.board.commentsNum.toString()
+
         })
     }
 

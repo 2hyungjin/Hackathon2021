@@ -10,14 +10,26 @@ import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
     private val postRetrofit = RetrofitConfig.postRetrofit
-    val getBoardsRes = MutableLiveData<List<Board>>()
+    val resGetBoards = MutableLiveData<List<Board>>()
+    val resSearchBoards = MutableLiveData<List<Board>>()
     fun getBoards() {
         viewModelScope.launch {
             postRetrofit.get().let {
                 if (it.isSuccessful) {
                     Log.d("main", it.body()?.data.toString())
-                    getBoardsRes.postValue(it.body()?.data!!)
+                    resGetBoards.postValue(it.body()?.data!!)
                 } else {
+                    Log.d("main", it.errorBody().toString())
+                }
+            }
+        }
+    }
+    fun searchBoards(value:String){
+        viewModelScope.launch {
+            postRetrofit.searchPost(value).let {
+                if (it.isSuccessful){
+                    resSearchBoards.postValue(it.body()?.data!!)
+                }else{
                     Log.d("main", it.errorBody().toString())
                 }
             }

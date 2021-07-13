@@ -2,7 +2,7 @@ package com.example.hackathon2021.data
 
 data class Comment(
     val comment:String,
-    val date:Long,
+    val date:String,
     val id:Int,
     val isMe:Boolean,
     val isWriter:Boolean,

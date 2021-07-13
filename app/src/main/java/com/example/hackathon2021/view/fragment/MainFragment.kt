@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -45,12 +45,26 @@ class MainFragment : Fragment() {
             adapter = boardListAdapter
         }
         binding.swipeLayoutMainFragment.setOnRefreshListener { getBoards() }
+        binding.edtSearchMainFragment.addTextChangedListener {
+            if (it.toString().isNotEmpty()){
+                viewModel.searchBoards(it.toString())
+            }else{
+                getBoards()
+            }
+        }
+        binding.fabNavigateLogoutMainFragment.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
+        }
         getBoards()
 
     }
 
     private fun observe() {
-        viewModel.getBoardsRes.observe(viewLifecycleOwner, Observer {
+        viewModel.resGetBoards.observe(viewLifecycleOwner, Observer {
+            boardListAdapter.submitList(it)
+            binding.swipeLayoutMainFragment.isRefreshing = false
+        })
+        viewModel.resSearchBoards.observe(viewLifecycleOwner, Observer {
             boardListAdapter.submitList(it)
             binding.swipeLayoutMainFragment.isRefreshing = false
         })
@@ -63,7 +77,6 @@ class MainFragment : Fragment() {
     private fun getBoards() {
         viewModel.getBoards()
     }
-
 
 
 }

@@ -9,8 +9,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:background="@color/white"
@@ -36,7 +36,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/tv_name_rv_item_board"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -97,14 +97,16 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_comments_rv_item_board"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="45dp"
+                    android:layout_width="wrap_content"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
                     android:layout_height="40dp"
                     android:layout_margin="10dp"
                     android:gravity="center"
                     android:textColor="@color/icon"
                     android:textSize="10sp"
                     app:icon="@drawable/comment"
-                    app:iconSize="10dp"
+                    app:iconSize="14dp"
                     app:iconTint="@color/icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

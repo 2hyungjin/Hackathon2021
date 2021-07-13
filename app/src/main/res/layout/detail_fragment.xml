@@ -137,11 +137,12 @@
                 android:id="@+id/edt_comment_detail_fragment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:background="@color/white"
                 android:textColor="@color/black"
-                android:layout_marginLeft="10dp"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_post_comment_detail_fragment"
                 app:layout_constraintStart_toEndOf="@+id/textView2"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="asdffff" />

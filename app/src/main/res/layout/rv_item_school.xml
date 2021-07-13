@@ -8,34 +8,35 @@
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
-            android:padding="15dp"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/tv_school_name_school_rv_item"
-                android:textColor="@color/black"
-                android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="14sp"
                 tools:layout_editor_absoluteX="11dp" />
 
             <TextView
-                android:layout_marginTop="5dp"
                 android:id="@+id/tv_school_address_school_rv_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:layout_marginTop="5dp"
                 android:text="TextView"
+                android:textSize="10sp"
                 tools:layout_editor_absoluteY="38dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
