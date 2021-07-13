@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.ListAdapter
@@ -16,7 +17,10 @@ import com.example.hackathon2021.data.Board
 import com.example.hackathon2021.util.BoardDiffUtil
 
 
-class BoardListAdapter(val onClick: (board: Board) -> Unit) :
+class BoardListAdapter(
+    val onClick: (board: Board) -> Unit,
+    val onDeleteBtnClick: (boardId: Int) -> Unit
+) :
     ListAdapter<Board, BoardListAdapter.ViewHolder>(BoardDiffUtil()) {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvTitle: TextView = view.findViewById(R.id.tv_title_rv_item_board)
@@ -24,6 +28,8 @@ class BoardListAdapter(val onClick: (board: Board) -> Unit) :
         val btnComments: Button = view.findViewById(R.id.btn_comments_rv_item_board)
         val tvName: TextView = view.findViewById(R.id.tv_name_rv_item_board)
         val tvTime: TextView = view.findViewById(R.id.tv_time_rv_item_board)
+        val btnDelete: ImageView = view.findViewById(R.id.btn_delete_rv_item_board)
+
 
         fun bind(board: Board) {
             tvTitle.text = board.title
@@ -39,6 +45,12 @@ class BoardListAdapter(val onClick: (board: Board) -> Unit) :
                     text = "나"
                     setTextColor(Color.parseColor("#FF6200EE"))
                 }
+                btnDelete.apply {
+                    visibility = View.VISIBLE
+                    setOnClickListener {
+                        onDeleteBtnClick.invoke(board.id)
+                    }
+                }
             } else {
                 tvName.apply {
                     if (board.user.name == "익명") {
@@ -48,6 +60,7 @@ class BoardListAdapter(val onClick: (board: Board) -> Unit) :
                     }
                     setTextColor(Color.BLACK)
                 }
+                btnDelete.visibility = View.INVISIBLE
             }
             tvTime.text = board.date
         }

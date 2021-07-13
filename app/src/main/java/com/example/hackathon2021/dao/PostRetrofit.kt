@@ -6,10 +6,7 @@ import com.example.hackathon2021.data.req.ReqPost
 import com.example.hackathon2021.data.req.ReqPostComment
 import com.example.hackathon2021.data.res.Res
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface PostRetrofit {
     @POST("post")
@@ -34,4 +31,9 @@ interface PostRetrofit {
     suspend fun searchPost(
         @Path("searchValue") value: String
     ): Response<Res<List<Board>>>
+
+    @DELETE("post/{postId}")
+    suspend fun deleteBoard(
+        @Path("postId") postId: Int
+    ): Response<Res<Any>>
 }

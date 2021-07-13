@@ -34,9 +34,10 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe()
-        boardListAdapter = BoardListAdapter {
-            navigateToDetail(it)
-        }
+        boardListAdapter = BoardListAdapter(
+            onClick = { navigateToDetail(board = it) },
+            onDeleteBtnClick = { deleteBoard(it) }
+        )
         binding.fabNavigatePostMainFragment.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_postFragment)
         }
@@ -46,9 +47,9 @@ class MainFragment : Fragment() {
         }
         binding.swipeLayoutMainFragment.setOnRefreshListener { getBoards() }
         binding.edtSearchMainFragment.addTextChangedListener {
-            if (it.toString().isNotEmpty()){
+            if (it.toString().isNotEmpty()) {
                 viewModel.searchBoards(it.toString())
-            }else{
+            } else {
                 getBoards()
             }
         }
@@ -68,6 +69,9 @@ class MainFragment : Fragment() {
             boardListAdapter.submitList(it)
             binding.swipeLayoutMainFragment.isRefreshing = false
         })
+        viewModel.resDeleteBoard.observe(viewLifecycleOwner, Observer {
+            getBoards()
+        })
     }
 
     private fun navigateToDetail(board: Board) {
@@ -78,5 +82,8 @@ class MainFragment : Fragment() {
         viewModel.getBoards()
     }
 
+    private fun deleteBoard(boardId: Int) {
+        viewModel.deleteBoard(boardId)
+    }
 
 }

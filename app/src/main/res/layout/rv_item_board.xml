@@ -56,20 +56,20 @@
                 android:layout_marginRight="10dp"
                 android:maxLines="1"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView3"
                 tools:text="제목제목제목" />
 
-            <kr.co.prnd.readmore.ReadMoreTextView
+            <TextView
+                android:gravity="center_vertical"
                 android:id="@+id/tv_contents_rv_item_board"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:layout_marginRight="10dp"
                 android:textColor="@color/black"
@@ -77,9 +77,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title_rv_item_board"
-                app:readMoreMaxLine="1"
-                app:readMoreText="…더보기"
                 tools:text="ㅁㅁㄴㄹㅁㄹㄴ" />
+
+            <ImageView
+                android:id="@+id/btn_delete_rv_item_board"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:tint="@color/icon"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_baseline_close_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:focusable="true" />
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
