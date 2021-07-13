@@ -34,6 +34,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:overScrollMode="never"
             android:layout_marginTop="20dp"
             tools:listitem="@layout/rv_item_school"
             android:id="@+id/rv_sign_up_school_fragment"

@@ -37,10 +37,11 @@
 
             <TextView
                 android:layout_marginLeft="5dp"
-                android:id="@+id/tv_writer_rv_item_board"
+                android:id="@+id/tv_name_rv_item_board"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="익명"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView3"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"

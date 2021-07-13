@@ -55,7 +55,7 @@ class SignUpFragment : Fragment() {
                     Toast.makeText(requireContext(), "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show()
                     isIdChecked = true
                 }
-                202 ->{
+                202 -> {
                     Toast.makeText(requireContext(), "중복된 아이디입니다.", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -69,10 +69,14 @@ class SignUpFragment : Fragment() {
         val id = binding.edtIdSignUpFragment.text.toString()
         val pw = binding.edtPwSignUpFragment.text.toString()
         val pw2 = binding.edtPw2SignUpFragment.text.toString()
-        if (isIdChecked && pwCheck(pw, pw2)) {
+        if (isIdChecked) {
+            if (pwCheck(pw, pw2)) {
+                viewModel.signUp(ReqSignUp(grade.toInt(), classNum.toInt(), id, pw, school.name, school.code, name))
+            } else Toast.makeText(requireContext(), "형식에 맞게 입력해주세요", Toast.LENGTH_SHORT).show()
 //            binding.progressBar.visibility=View.VISIBLE
-            viewModel.signUp(ReqSignUp(grade.toInt(), classNum.toInt(), id, pw, school.name, school.code, name))
-        } else Toast.makeText(requireContext(), "형식에 맞게 입력해주세요", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(requireContext(), "아이디 중복 체크를 해주세요", Toast.LENGTH_SHORT).show()
+        }
 
     }
 

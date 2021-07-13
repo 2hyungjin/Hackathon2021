@@ -1,5 +1,7 @@
 package com.example.hackathon2021.adapter
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -20,9 +22,9 @@ class BoardListAdapter(val onClick: (board: Board) -> Unit) :
         val tvTitle: TextView = view.findViewById(R.id.tv_title_rv_item_board)
         val tvContent: TextView = view.findViewById(R.id.tv_contents_rv_item_board)
         val btnComments: Button = view.findViewById(R.id.btn_comments_rv_item_board)
+        val tvName: TextView = view.findViewById(R.id.tv_name_rv_item_board)
         val tvTime: TextView = view.findViewById(R.id.tv_time_rv_item_board)
 
-        @RequiresApi(Build.VERSION_CODES.O)
         fun bind(board: Board) {
             tvTitle.text = board.title
             tvContent.text = board.content
@@ -30,6 +32,21 @@ class BoardListAdapter(val onClick: (board: Board) -> Unit) :
                 text = board.commentsNum.toString()
                 setOnClickListener {
                     onClick.invoke(board)
+                }
+            }
+            if (board.isMe) {
+                tvName.apply {
+                    text = "나"
+                    setTextColor(Color.parseColor("#FF6200EE"))
+                }
+            } else {
+                tvName.apply {
+                    if (board.user.name == "익명") {
+                        text = board.user.name
+                    } else {
+                        text = "${board.user.grade}-${board.user.classNum} ${board.user.name}"
+                    }
+                    setTextColor(Color.BLACK)
                 }
             }
 //            tvTime.text =
