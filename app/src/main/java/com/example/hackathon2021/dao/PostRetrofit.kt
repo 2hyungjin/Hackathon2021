@@ -1,5 +1,6 @@
 package com.example.hackathon2021.dao
 
+import com.example.hackathon2021.data.Board
 import com.example.hackathon2021.data.req.ReqPost
 import com.example.hackathon2021.data.res.Res
 import retrofit2.Response
@@ -15,7 +16,5 @@ interface PostRetrofit {
     ): Response<Res<Any>>
 
     @GET("post")
-    suspend fun get(
-
-    )
+    suspend fun get():Response<Res<Board>>
 }

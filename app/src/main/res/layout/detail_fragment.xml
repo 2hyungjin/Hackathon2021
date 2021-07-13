@@ -12,7 +12,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:id="@+id/tv_title_detail_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,14 +23,14 @@
         android:id="@+id/tv_time_detail_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         tools:text="7월 12일 3:58"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:textSize="14sp"
         android:paddingBottom="20dp"
         android:paddingTop="20dp"
@@ -59,7 +59,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:backgroundTint="@color/icon"
             android:src="@drawable/comment"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,28 +70,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:backgroundTint="@color/background"
             android:textColor="@color/icon"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="댓글 24개" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_layout_detail_fragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@+id/swipe_layout_detail_fragment"
+            android:layout_marginTop="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_comments_count_detail_fragment">
+            app:layout_constraintTop_toBottomOf="@+id/tv_comments_count_detail_fragment"
+            app:layout_constraintVertical_bias="0.0">
+
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
+                tools:listitem="@layout/rv_item_comments"
                 android:id="@+id/rv_comments_detail_fragment"
-                android:layout_marginTop="10dp"
-                android:layout_height="0dp"/>
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

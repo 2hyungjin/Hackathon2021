@@ -3,16 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background">
+    android:layout_height="wrap_content"
+    >
 
     <androidx.cardview.widget.CardView
-        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        app:cardElevation="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/white"
         app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,41 +24,66 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/person"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
-                android:layout_margin="20sp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/tv_writer_rv_item_board"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="익명"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+            <TextView
                 android:id="@+id/tv_title_rv_item_board"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:maxLines="1"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3"
                 tools:text="제목제목제목" />
 
             <kr.co.prnd.readmore.ReadMoreTextView
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:id="@+id/tv_contents_rv_item_board"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:readMoreMaxLine="1"
-                app:readMoreText="…더보기"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_marginRight="10dp"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title_rv_item_board"
+                app:readMoreMaxLine="1"
+                app:readMoreText="…더보기"
                 tools:text="ㅁㅁㄴㄹㅁㄹㄴ" />
 
             <LinearLayout
-                android:layout_marginTop="20dp"
                 android:id="@+id/linearLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/card"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -65,22 +93,23 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_contents_rv_item_board">
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_comments_rv_item_board"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="45dp"
                     android:layout_height="40dp"
                     android:layout_margin="10dp"
                     android:gravity="center"
                     android:textColor="@color/icon"
+                    android:textSize="10sp"
                     app:icon="@drawable/comment"
                     app:iconSize="10dp"
-                    android:textSize="10sp"
                     app:iconTint="@color/icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:text="16" />
 
                 <TextView
-
+                    android:id="@+id/tv_time_rv_item_board"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
