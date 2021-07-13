@@ -41,7 +41,6 @@ class PostFragment : Fragment() {
         viewModel.postRes.observe(viewLifecycleOwner, Observer {
             if (it.status == 200) {
                 Toast.makeText(requireContext(), "게시글 작성에 성공하였습니다", Toast.LENGTH_SHORT).show()
-                findNavController().navigateUp()
             } else {
                 Toast.makeText(requireContext(), "게시글 작성에 실패하였습니다", Toast.LENGTH_SHORT).show()
             }

@@ -1,5 +1,6 @@
 package com.example.hackathon2021.util
 
+import androidx.recyclerview.widget.DiffUtil
 import com.example.hackathon2021.data.Comment
 
 class CommentDiffUtil : DiffUtil.ItemCallback<Comment>() {

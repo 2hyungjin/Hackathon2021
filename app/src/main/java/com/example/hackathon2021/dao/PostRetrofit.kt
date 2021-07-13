@@ -3,6 +3,7 @@ package com.example.hackathon2021.dao
 import com.example.hackathon2021.data.Board
 import com.example.hackathon2021.data.Comment
 import com.example.hackathon2021.data.req.ReqPost
+import com.example.hackathon2021.data.req.ReqPostComment
 import com.example.hackathon2021.data.res.Res
 import retrofit2.Response
 import retrofit2.http.Body
@@ -22,4 +23,10 @@ interface PostRetrofit {
 
     @GET("comment/{postId}")
     suspend fun getComments(@Path("postId") postId: Int): Response<Res<List<Comment>>>
+
+    @POST("comment")
+    suspend fun postComment(
+        @Body
+        reqPostComment: ReqPostComment
+    ): Response<Res<Any>>
 }
