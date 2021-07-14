@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:overScrollMode="never"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout7"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
             tools:layout_editor_absoluteX="0dp"
             tools:listitem="@layout/rv_item_comments" />
@@ -106,7 +106,6 @@
             android:id="@+id/constraintLayout7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:background="@drawable/search_bar"
             android:backgroundTint="@color/white"
             android:padding="10dp"

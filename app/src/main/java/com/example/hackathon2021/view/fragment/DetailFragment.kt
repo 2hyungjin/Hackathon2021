@@ -47,7 +47,6 @@ class DetailFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
         }
         binding.tvCommentsCountDetailFragment.text = args.board.commentsNum.toString()
-        binding.swipeLayoutDetailFragment.setOnRefreshListener { getComments() }
         binding.btnPostCommentDetailFragment.setOnClickListener { postComment() }
         getComments()
         observe()
@@ -56,7 +55,6 @@ class DetailFragment : Fragment() {
     private fun observe() {
         viewModel.resGetComments.observe(viewLifecycleOwner, Observer {
             commentListAdapter.submitList(it)
-            binding.swipeLayoutDetailFragment.isRefreshing = false
         })
         viewModel.resPostComment.observe(viewLifecycleOwner, Observer {
             binding.edtCommentDetailFragment.text = null
