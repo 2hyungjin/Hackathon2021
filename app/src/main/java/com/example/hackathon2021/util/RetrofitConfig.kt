@@ -31,7 +31,7 @@ object RetrofitConfig {
             val req =
                 chain.request().newBuilder().addHeader(
                     "Authorization",
-                    "Bearer " + mApplication.prefs.token!!
+                    "Bearer " + mApplication.prefs.token?:""
                 ).build()
 
             return chain.proceed(req)
