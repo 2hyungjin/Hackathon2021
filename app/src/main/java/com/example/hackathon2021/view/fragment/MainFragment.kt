@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +17,7 @@ import com.example.hackathon2021.R
 import com.example.hackathon2021.adapter.BoardListAdapter
 import com.example.hackathon2021.data.Board
 import com.example.hackathon2021.databinding.MainFragmentBinding
+import com.example.hackathon2021.databinding.RvItemBoardBinding
 
 class MainFragment : Fragment() {
     private val viewModel: MainViewModel by viewModels()
@@ -35,7 +37,9 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observe()
         boardListAdapter = BoardListAdapter(
-            onClick = { navigateToDetail(board = it) },
+            onClick = {
+                navigateToDetail(it)
+            },
             onDeleteBtnClick = { deleteBoard(it) }
         )
         binding.fabNavigatePostMainFragment.setOnClickListener {
@@ -75,7 +79,9 @@ class MainFragment : Fragment() {
     }
 
     private fun navigateToDetail(board: Board) {
-        findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(board))
+        findNavController().navigate(
+            MainFragmentDirections.actionMainFragmentToDetailFragment(board)
+        )
     }
 
     private fun getBoards() {

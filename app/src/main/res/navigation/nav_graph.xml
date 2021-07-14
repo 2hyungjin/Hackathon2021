@@ -6,17 +6,17 @@
     app:startDestination="@id/loginFragment">
 
     <fragment
-        android:label=""
         android:id="@+id/loginFragment"
         android:name="com.example.hackathon2021.view.fragment.LoginFragment"
-        tools:layout="@layout/login_fragment" >
+        android:label=""
+        tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_signUpSchoolFragment"
             app:destination="@id/signUpSchoolFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
         <action
             android:id="@+id/action_loginFragment_to_mainFragment"
             app:destination="@id/mainFragment"
@@ -27,22 +27,23 @@
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:label="학교 찾기"
         android:id="@+id/signUpSchoolFragment"
         android:name="com.example.hackathon2021.view.fragment.SignUpSchoolFragment"
-        tools:layout="@layout/sign_up_school_fragment" >
+        android:label="학교 찾기"
+        tools:layout="@layout/sign_up_school_fragment">
         <action
             android:id="@+id/action_signUpSchoolFragment_to_signUpFragment"
             app:destination="@id/signUpFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
-        android:label=""
         android:id="@+id/signUpFragment"
         android:name="com.example.hackathon2021.view.fragment.SignUpFragment"
-        tools:layout="@layout/sign_up_fragment" >
+        android:label=""
+        tools:layout="@layout/sign_up_fragment">
         <argument
             android:name="School"
             app:argType="com.example.hackathon2021.data.School" />
@@ -57,24 +58,26 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-
         android:name="com.example.hackathon2021.view.fragment.MainFragment"
-        android:label="익명 게시판"
+        android:label=""
         tools:layout="@layout/main_fragment">
+        <argument
+            android:name="name"
+            app:argType="string" />
+
         <action
             android:id="@+id/action_mainFragment_to_postFragment"
             app:destination="@id/postFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_exit_anim" />
-        <argument
-            android:name="school"
-            app:argType="com.example.hackathon2021.data.School" />
+            app:popEnterAnim="@anim/nav_default_exit_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_mainFragment_to_detailFragment"
             app:destination="@id/detailFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_mainFragment_to_loginFragment"
@@ -87,27 +90,30 @@
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:label=""
-
         android:id="@+id/postFragment"
+
         android:name="com.example.hackathon2021.view.fragment.PostFragment"
+        android:label=""
         tools:layout="@layout/post_fragment" />
     <fragment
-        android:label=""
-
         android:id="@+id/signUpResFragment"
-        android:name="com.example.hackathon2021.view.fragment.SignUpResFragment">
+        android:name="com.example.hackathon2021.view.fragment.SignUpResFragment"
+        android:label="">
         <action
             android:id="@+id/action_signUpResFragment_to_loginFragment"
             app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:label=""
-
         android:id="@+id/detailFragment"
+
         android:name="com.example.hackathon2021.view.fragment.DetailFragment"
+        android:label=""
         tools:layout="@layout/detail_fragment">
         <argument
             android:name="board"

@@ -15,11 +15,12 @@ class DetailViewModel : ViewModel() {
     private val postRetrofit: PostRetrofit = RetrofitConfig.postRetrofit
     val resGetComments = MutableLiveData<List<Comment>>()
     val resPostComment = MutableLiveData<Res<Any>>()
+    val resDeleteComment = MutableLiveData<Res<Any>>()
     fun getComments(boardId: Int) {
         viewModelScope.launch {
             postRetrofit.getComments(boardId).let {
                 if (it.isSuccessful) {
-                    Log.d("detail",it.body()?.data.toString())
+                    Log.d("detail", it.body()?.data.toString())
                     resGetComments.postValue(it.body()?.data!!)
                 } else {
                     Log.d("detail", it.errorBody().toString())
@@ -34,8 +35,22 @@ class DetailViewModel : ViewModel() {
             postRetrofit.postComment(reqPostComment).let {
                 if (it.isSuccessful) {
                     resPostComment.postValue(it.body())
-                }else{
-                    Log.d("detail",it.errorBody().toString())
+                } else {
+                    Log.d("detail", it.errorBody().toString())
+                }
+            }
+        }
+    }
+
+    fun deleteComment(commentId: Int) {
+        viewModelScope.launch {
+            postRetrofit.deleteComment(commentId).let {
+                if (it.isSuccessful) {
+                    Log.d("detail", it.body().toString())
+
+                    resDeleteComment.postValue(it.body())
+                } else {
+                    Log.d("detail", it.errorBody().toString())
                 }
             }
         }

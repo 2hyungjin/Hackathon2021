@@ -52,7 +52,7 @@ class LoginFragment : Fragment() {
                     mApplication.prefs.token = it.data.authToken
                     findNavController().navigate(
                         LoginFragmentDirections.actionLoginFragmentToMainFragment(
-                            it.data.school
+                            it.data.school.name
                         )
                     )
                 }

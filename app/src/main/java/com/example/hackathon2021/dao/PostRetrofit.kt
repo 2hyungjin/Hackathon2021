@@ -36,4 +36,9 @@ interface PostRetrofit {
     suspend fun deleteBoard(
         @Path("postId") postId: Int
     ): Response<Res<Any>>
+
+    @DELETE("comment/{commentId}")
+    suspend fun deleteComment(
+        @Path("commentId") commentId: Int
+    ): Response<Res<Any>>
 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
@@ -35,8 +36,11 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        commentListAdapter = CommentListAdapter()
-        thisBoard=args.board
+        ViewCompat.setTransitionName(binding.tvTitleDetailFragment, "title_${args.board.title}")
+        ViewCompat.setTransitionName(binding.textView4, "duration_${args.board.content}")
+
+        commentListAdapter = CommentListAdapter { (deleteComment(it)) }
+        thisBoard = args.board
         binding.board = thisBoard
         binding.rvCommentsDetailFragment.apply {
             adapter = commentListAdapter
@@ -55,12 +59,15 @@ class DetailFragment : Fragment() {
             binding.swipeLayoutDetailFragment.isRefreshing = false
         })
         viewModel.resPostComment.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(requireContext(), "댓글 작성에 성공하였습니다", Toast.LENGTH_SHORT).show()
             binding.edtCommentDetailFragment.text = null
             getComments()
             thisBoard.commentsNum++
             binding.tvCommentsCountDetailFragment.text = args.board.commentsNum.toString()
-
+        })
+        viewModel.resDeleteComment.observe(viewLifecycleOwner, Observer {
+            getComments()
+            thisBoard.commentsNum--
+            binding.tvCommentsCountDetailFragment.text = args.board.commentsNum.toString()
         })
     }
 
@@ -70,7 +77,13 @@ class DetailFragment : Fragment() {
 
     private fun postComment() {
         val comment = binding.edtCommentDetailFragment.text.toString()
-        viewModel.postComment(ReqPostComment(comment = comment, postId = args.board.id))
+        if (comment.isNotBlank()) {
+            viewModel.postComment(ReqPostComment(comment = comment, postId = args.board.id))
+        }
+    }
+
+    private fun deleteComment(commentId: Int) {
+        viewModel.deleteComment(commentId)
     }
 
 

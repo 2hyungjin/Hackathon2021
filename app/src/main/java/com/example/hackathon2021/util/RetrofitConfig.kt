@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitConfig {
-    private const val BASE_URL = "http://192.168.137.32:8080/"
+    private const val BASE_URL = "http://192.168.137.143:8080/"
     private fun retrofit(): Retrofit =
         Retrofit.Builder().baseUrl(BASE_URL)
             .client(
@@ -27,14 +27,13 @@ object RetrofitConfig {
 
     class Interceptor : okhttp3.Interceptor {
         override fun intercept(chain: okhttp3.Interceptor.Chain): Response {
-            var req = chain.request().newBuilder().build()
-            if (mApplication.prefs.token != null) {
-                req =
-                    chain.request().newBuilder().addHeader(
-                        "Authorization",
-                        "Bearer " + mApplication.prefs.token!!
-                    ).build()
-            }
+
+            val req =
+                chain.request().newBuilder().addHeader(
+                    "Authorization",
+                    "Bearer " + mApplication.prefs.token!!
+                ).build()
+
             return chain.proceed(req)
         }
 

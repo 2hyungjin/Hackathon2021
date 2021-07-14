@@ -5,6 +5,7 @@ data class Comment(
     val date:String,
     val id:Int,
     val isMe:Boolean,
+    val isAdmin: Boolean,
     val isWriter:Boolean,
     val user:User
 )

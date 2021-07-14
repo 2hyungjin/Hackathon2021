@@ -37,11 +37,10 @@ class PostFragment : Fragment() {
         val content = binding.edtContentPostFragment.text.toString()
         viewModel.post(ReqPost(title, content, isSecret))
     }
-    private fun observe(){
+
+    private fun observe() {
         viewModel.postRes.observe(viewLifecycleOwner, Observer {
-            if (it.status == 200) {
-                Toast.makeText(requireContext(), "게시글 작성에 성공하였습니다", Toast.LENGTH_SHORT).show()
-            } else {
+            if (it.status != 200) {
                 Toast.makeText(requireContext(), "게시글 작성에 실패하였습니다", Toast.LENGTH_SHORT).show()
             }
             findNavController().navigateUp()
